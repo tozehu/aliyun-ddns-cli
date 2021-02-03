@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	dns "github.com/chenhw2/aliyun-ddns-cli/alidns"
-	"github.com/chenhw2/ip2loc"
-	"gopkg.in/urfave/cli.v1"
+	dns "github.com/honwen/aliyun-ddns-cli/alidns"
+	"github.com/honwen/ip2loc"
+	"github.com/urfave/cli"
 )
 
 // AccessKey from https://ak-console.aliyun.com/#/accesskey
@@ -147,7 +147,7 @@ func ip2locCN(ip string) (str string) {
 	if loc, err := ip2loc.IP2loc(ip); err != nil {
 		log.Printf("%+v", err)
 	} else {
-		str = fmt.Sprintf("[%s %s %s]", loc.Country, loc.Province, loc.City)
+		str = fmt.Sprintf("[%s %s %s %s]", loc.CountryName, loc.RegionName, loc.CityName, loc.IspDomain)
 	}
 	return
 }
